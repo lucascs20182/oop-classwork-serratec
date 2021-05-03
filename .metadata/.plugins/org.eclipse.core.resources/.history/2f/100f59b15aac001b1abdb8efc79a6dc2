@@ -1,0 +1,17 @@
+package org.serratec.app;
+
+import java.time.LocalDate;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Dependente dependente1 = new Dependente("Mateus", "22345678990", LocalDate.of(2021, 06, 26), TipoParentesco.FILHO);
+		Dependente dependente2 = new Dependente("Mateus2", "32345678990", LocalDate.of(2020, 06, 26), TipoParentesco.SOBRINHO);
+		
+		Dependente[] dependentesDoLucas = { dependente1, dependente2 };
+		 
+		Pessoa funcionario1 = new Funcionario("Lucas Cruz", "12345678990", LocalDate.of(1997, 06, 26), 7000, );
+
+	}
+
+}

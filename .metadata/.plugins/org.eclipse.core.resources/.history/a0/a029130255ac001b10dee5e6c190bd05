@@ -1,0 +1,46 @@
+package org.serratec.app;
+
+import java.time.LocalDate;
+
+import org.serratec.excecoes.CpfRepetidoException;
+
+public class Funcionario extends Pessoa {
+	private double salarioBruto;
+	private double descontoInss;
+	private double descontoIR;
+	private Dependente[] dependentes;
+
+	public Funcionario(String nome, String cpf, LocalDate dataNascimento, double salarioBruto, double descontoInss,
+			double descontoIR, Dependente[] dependentes) throws CpfRepetidoException {
+		super(nome, cpf, dataNascimento);
+		this.salarioBruto = salarioBruto;
+		this.descontoInss = descontoInss;
+		this.descontoIR = descontoIR;
+		this.dependentes = dependentes;
+	}
+
+	public double getSalarioBruto() {
+		return salarioBruto;
+	}
+
+	public double getDescontoInss() {
+		double impostoSemAParcelaADeduzir = 0;
+		
+		if(this.salarioBruto <= 1100) {
+			impostoSemAParcelaADeduzir = this.salarioBruto * 7.5 / 100;
+		} else if(this.salarioBruto <= 2203.48) {
+			impostoSemAParcelaADeduzir = this.salarioBruto * 9 / 100;
+		} else if(this.salarioBruto <= 3305.22) {
+			impostoSemAParcelaADeduzir = this.salarioBruto * 12 / 100;
+		} else if(this.salarioBruto <= 6433.57) {
+			impostoSemAParcelaADeduzir = this.salarioBruto * 14 / 100;
+		} else {
+			impostoSemAParcelaADeduzir = 6433.57 * 7.5 / 100;
+		}
+		return descontoInss;
+	}
+
+	public double getDescontoIR() {
+		return descontoIR = this.dependentes.length * 189.59;
+	}
+}

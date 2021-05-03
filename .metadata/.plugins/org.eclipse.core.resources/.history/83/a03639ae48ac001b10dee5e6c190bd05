@@ -1,0 +1,19 @@
+package org.serratec.app;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public abstract class Pessoa {
+	protected String nome;
+	protected String cpf;
+	protected LocalDate dataNascimento;
+	protected static List cpfsCadastrados;
+	
+	public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		
+		
+		this.cpf = cpf;
+	}
+}

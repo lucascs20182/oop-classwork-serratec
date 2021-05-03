@@ -1,0 +1,5 @@
+package org.serratec.app;
+
+public class Dependente extends Pessoa {
+	TipoParentesco parentesco;
+}
