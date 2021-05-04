@@ -12,7 +12,7 @@ public class Programa {
 		Dependente dependente2 = new Dependente("Mateus2", "32345678990", LocalDate.of(2020, 06, 26), TipoParentesco.SOBRINHO);
 		Dependente dependente3 = new Dependente("Mateus2", "42345678990", LocalDate.of(2020, 06, 26), TipoParentesco.SOBRINHO);
 		
-		Dependente[] dependentesDoLucas = { dependente1 };
+		Dependente[] dependentesDoLucas = { dependente1, dependente2, dependente3 };
 		 
 		Funcionario funcionario1 = new Funcionario("Lucas Cruz", "12345678990", LocalDate.of(1997, 06, 26), 4300, dependentesDoLucas);
 		

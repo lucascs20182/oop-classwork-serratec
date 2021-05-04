@@ -14,7 +14,7 @@ public class Programa {
 		
 		Dependente[] dependentesDoLucas = { dependente1 };
 		 
-		Funcionario funcionario1 = new Funcionario("Lucas Cruz", "12345678990", LocalDate.of(1997, 06, 26), 4300, dependentesDoLucas);
+		Funcionario funcionario1 = new Funcionario("Lucas Cruz", "12345678990", LocalDate.of(1997, 06, 26), 9000, dependentesDoLucas);
 		
 		funcionario1.calculaDescontoInss();
 		funcionario1.calculaDeducaoDependentes();

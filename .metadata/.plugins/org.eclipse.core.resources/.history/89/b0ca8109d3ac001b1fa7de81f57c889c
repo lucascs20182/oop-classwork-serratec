@@ -45,18 +45,16 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public double calculaDescontoIR() {
-		double descontoIR = this.salarioBruto - this.deducaoDependentes - this.descontoInss;
-		
-		if(descontoIR <= 1903.98) {
-			return this.descontoIR;
-		} else if(descontoIR <= 2826.65) {
-			return this.descontoIR = (descontoIR * 7.5 / 100) - 142.80;
-		} else if(descontoIR <= 3751.05) {
-			return this.descontoIR = (descontoIR * 15 / 100) - 354.80;
-		} else if(descontoIR <= 4664.68) {
-			return this.descontoIR = (descontoIR * 22.5 / 100) - 636.13;
+		if(this.salarioBruto <= 1903.98) {
+			return descontoIR = this.salarioBruto - deducaoDependentes - descontoInss;
+		} else if(this.salarioBruto <= 2826.65) {
+			return descontoIR = ((this.salarioBruto - deducaoDependentes - descontoInss) * 7.5 / 100) - 142.80;
+		} else if(this.salarioBruto <= 3751.05) {
+			return descontoIR = ((this.salarioBruto - deducaoDependentes - descontoInss) * 15 / 100) - 354.80;
+		} else if(this.salarioBruto <= 4664.68) {
+			return descontoIR = ((this.salarioBruto - deducaoDependentes - descontoInss) * 22.5 / 100) - 636.13;
 		} else {
-			return this.descontoIR = (descontoIR * 27.5 / 100) - 869.36;
+			return descontoIR = ((this.salarioBruto - deducaoDependentes - descontoInss) * 27.5 / 100) - 869.36;
 		}
 	}
 

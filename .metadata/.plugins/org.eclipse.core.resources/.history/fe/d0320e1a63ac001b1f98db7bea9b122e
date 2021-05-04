@@ -17,7 +17,7 @@ public abstract class Pessoa {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		
-		if(!isCpfOnList(cpf)) {
+		if(isCpfOnList(cpf)) {
 			this.cpf = cpf;
 			Pessoa.cpfsCadastrados.add(cpf);
 		}
