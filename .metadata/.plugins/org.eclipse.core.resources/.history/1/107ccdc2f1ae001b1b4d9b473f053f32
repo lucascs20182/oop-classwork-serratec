@@ -2,6 +2,6 @@ package org.serratec.excecoes;
 
 public class DependenteException extends Exception {
 	public DependenteException() {
-		super("Dependente não pode ter mais do que 18 anos.");
+		super("Todo dependente tem que ser menor que 18 anos.");
 	}
 }

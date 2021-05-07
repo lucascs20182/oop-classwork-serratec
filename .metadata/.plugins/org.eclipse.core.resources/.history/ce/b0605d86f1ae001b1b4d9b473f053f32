@@ -7,6 +7,7 @@ import org.serratec.excecoes.DependenteException;
 
 public class Dependente extends Pessoa {
 	private TipoParentesco parentesco;
+	private int idade;
 
 	public Dependente(String nome, String cpf, LocalDate dataNascimento, TipoParentesco parentesco)
 			throws CpfRepetidoException, DependenteException {

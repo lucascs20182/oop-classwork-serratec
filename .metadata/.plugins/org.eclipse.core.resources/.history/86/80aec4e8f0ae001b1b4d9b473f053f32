@@ -12,16 +12,19 @@ public abstract class Pessoa {
 	protected String cpf;
 	protected LocalDate dataNascimento;
 	protected static List<String> cpfsCadastrados = new ArrayList<String>();
-
-	public Pessoa(String nome, String cpf, LocalDate dataNascimento) throws CpfRepetidoException {
+	
+	public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-
-		if (cpfsCadastrados.contains(cpf)) {
-			throw new CpfRepetidoException();
-		} else {
+		
+		if(!cpfsCadastrados.contains(cpf)) {
 			this.cpf = cpf;
 			Pessoa.cpfsCadastrados.add(cpf);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + "]";
 	}
 }

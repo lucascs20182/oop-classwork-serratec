@@ -7,14 +7,15 @@ import org.serratec.excecoes.DependenteException;
 
 public class Dependente extends Pessoa {
 	private TipoParentesco parentesco;
+	private int idade;
 
 	public Dependente(String nome, String cpf, LocalDate dataNascimento, TipoParentesco parentesco)
 			throws CpfRepetidoException, DependenteException {
 		super(nome, cpf, dataNascimento);
 		this.parentesco = parentesco;
 		
-		if(isDependentOverEighteenYearsOld(dataNascimento)) {
-			throw new DependenteException();
+		if(isDependentUnderEighteenYearsOld(dataNascimento)) {
+			this.idade = defineIdade(dataNascimento);
 		}
 	}
 	
@@ -34,7 +35,15 @@ public class Dependente extends Pessoa {
 		return idade;
 	}
 	
-	private boolean isDependentOverEighteenYearsOld(LocalDate dataNascimento) {
-		return this.defineIdade(dataNascimento) > 18;
+	private boolean isDependentOverEighteenYearsOld(LocalDate dataNascimento) throws DependenteException {
+		if(this.defineIdade(dataNascimento) > 18) {
+			throw new DependenteException();			
+		}
+		
+		return true;
+	}
+	
+	public int getIdade() {
+		return idade;
 	}
 }
