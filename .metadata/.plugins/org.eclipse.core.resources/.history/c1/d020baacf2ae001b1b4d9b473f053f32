@@ -2,7 +2,7 @@ package org.serratec.calculos;
 
 import java.util.List;
 
-import org.serratec.entidades.Dependente;
+import org.serratec.app.Dependente;
 
 public class CalculadoraFinanceira {
 	private double salarioBruto;

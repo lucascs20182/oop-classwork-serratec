@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.serratec.entidades.Dependente;
-import org.serratec.entidades.Funcionario;
+import org.serratec.app.Dependente;
+import org.serratec.app.Funcionario;
 import org.serratec.enums.TipoParentesco;
 import org.serratec.excecoes.CpfRepetidoException;
 import org.serratec.excecoes.DependenteException;

@@ -1,6 +1,5 @@
 package org.serratec.app;
 
-import org.serratec.entidades.Funcionario;
 import org.serratec.service.Leitor;
 
 public class Programa {
