@@ -3,4 +3,5 @@
     <fullyQualifiedTypeName name="org.serratec.excecoes.CpfRepetidoException"/>
     <fullyQualifiedTypeName name="org.serratec.excecoes.DependenteException"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

@@ -1,8 +1,9 @@
 package org.serratec.app;
 
 import java.time.LocalDate;
-import org.serratec.excecoes.CpfRepetidoException;
 import java.util.List;
+
+import org.serratec.excecoes.CpfRepetidoException;
 
 public class Funcionario extends Pessoa {
 	private double salarioBruto;
@@ -41,7 +42,7 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public double calculaDeducaoDependentes() {
-		return this.deducaoDependentes = this.dependentes.size() * 189.59;
+		return this.deducaoDependentes = this.dependentes.length * 189.59;
 	}
 	
 	public double calculaDescontoIR() {
@@ -62,11 +63,5 @@ public class Funcionario extends Pessoa {
 
 	public double getSalarioLiquido() {
 		return salarioLiquido;
-	}
-
-	@Override
-	public String toString() {
-		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", salarioBruto="
-				+ salarioBruto + ", salarioLiquido=" + salarioLiquido + ", dependentes=" + dependentes + "]";
 	}
 }

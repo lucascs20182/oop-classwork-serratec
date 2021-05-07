@@ -1,27 +1,92 @@
 package org.serratec.app;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.serratec.excecoes.CpfRepetidoException;
 import org.serratec.excecoes.DependenteException;
 
 public class Programa {
+	public static void main(String[] args)
+			throws NumberFormatException, IOException, CpfRepetidoException, DependenteException {
+		String caminhoArquivo = "C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\entrada.csv";
+		FileReader arquivo = null;
 
-	public static void main(String[] args) throws CpfRepetidoException, DependenteException {
-		Dependente dependente1 = new Dependente("Mateus", "22345678990", LocalDate.of(2021, 06, 26), TipoParentesco.FILHO);
-		Dependente dependente2 = new Dependente("Mateus2", "32345678990", LocalDate.of(2020, 06, 26), TipoParentesco.SOBRINHO);
-		Dependente dependente3 = new Dependente("Mateus2", "42345678990", LocalDate.of(2020, 06, 26), TipoParentesco.SOBRINHO);
+		try {
+			arquivo = new FileReader(caminhoArquivo);
+		} catch (FileNotFoundException e) {
+			System.out.println("Formato errado de arquivo.");
+			e.getMessage();
+		}
 		
-		Dependente[] dependentesDoLucas = { dependente1 };
-		 
-		Funcionario funcionario1 = new Funcionario("Lucas Cruz", "12345678990", LocalDate.of(1997, 06, 26), 4300, dependentesDoLucas);
+		BufferedReader lerArquivo = new BufferedReader(arquivo);
+
+		List<Funcionario> funcionarios = processarArquivo(lerArquivo);
+
+		for (Funcionario funcionario : funcionarios) {
+			System.out.println(funcionario + "\n");
+		}
 		
-		funcionario1.calculaDescontoInss();
-		funcionario1.calculaDeducaoDependentes();
-		funcionario1.calculaDescontoIR();
-		funcionario1.calculaSalarioLiquido();
-		
-		System.out.println(funcionario1.getSalarioLiquido());
+		arquivo.close();
+		lerArquivo.close();
 	}
 
+	// escolher um nome melhor pra função; talvez lerArquivo, transformarArquivoEmObjeto, sei lá... 
+	public static List<Funcionario> processarArquivo(BufferedReader lerArquivo)
+			throws IOException, NumberFormatException, CpfRepetidoException, DependenteException {
+		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+
+		List<Dependente> dependentesDeFuncionario = new ArrayList<Dependente>();
+		Funcionario funcionario = null;
+		Dependente dependente = null;
+		TipoParentesco tipo = null;
+
+		for (String linha = lerArquivo.readLine(); linha != null; linha = lerArquivo.readLine()) {
+			String[] campo;
+			int ano, mes, dia;
+
+			if (linha.equals("")) {
+				funcionarios.add(funcionario);
+				dependentesDeFuncionario = new ArrayList<Dependente>();
+				continue;
+			}
+
+			campo = linha.split(";");
+			ano = Integer.parseInt(campo[2].substring(0, 4));
+			mes = Integer.parseInt(campo[2].substring(4, 6));
+			dia = Integer.parseInt(campo[2].substring(6, 8));
+
+			switch (campo[3]) {
+			case "FILHO":
+				tipo = TipoParentesco.FILHO;
+				break;
+			case "SOBRINHO":
+				tipo = TipoParentesco.SOBRINHO;
+				break;
+			case "OUTROS":
+				tipo = TipoParentesco.OUTROS;
+				break;
+			default:
+				break;
+			}
+
+			if (!(campo[3].equals("FILHO") || campo[3].equals("SOBRINHO") || campo[3].equals("OUTROS"))) {
+				funcionario = new Funcionario(campo[0], campo[1], LocalDate.of(ano, mes, dia),
+						Double.parseDouble(campo[3]), dependentesDeFuncionario);
+			} else {
+				dependente = new Dependente(campo[0], campo[1], LocalDate.of(ano, mes, dia), tipo);
+				dependentesDeFuncionario.add(dependente);
+			}
+		}
+
+		// adiciona último funcionario à lista de funcionarios
+		funcionarios.add(funcionario);
+
+		return funcionarios;
+	}
 }
