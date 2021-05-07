@@ -19,7 +19,9 @@ public class Funcionario extends Pessoa {
 		super(nome, cpf, dataNascimento);
 		this.salarioBruto = salarioBruto;
 		this.dependentes = dependentes;
-
+	}
+	
+	public void calcularSalarioLiquido() {
 		this.salarioLiquido = calculadora.calculaSalarioLiquido(this.salarioBruto, this.dependentes);
 		this.descontoInss = calculadora.getDescontoInss();
 		this.descontoIr = calculadora.getDescontoIR();

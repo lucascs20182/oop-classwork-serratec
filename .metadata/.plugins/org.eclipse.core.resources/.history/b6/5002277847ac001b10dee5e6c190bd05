@@ -1,9 +1,0 @@
-package org.serratec.app;
-
-public class Funcionario extends Pessoa {
-	private double salarioBruto;
-	private double descontoInss;
-	private double descontoIR;
-	
-	
-}

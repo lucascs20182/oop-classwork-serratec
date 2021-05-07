@@ -4,4 +4,7 @@
     <fullyQualifiedTypeName name="org.serratec.excecoes.DependenteException"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.serratec.service.Leitura"/>
+    <fullyQualifiedTypeName name="org.serratec.app.Dependente"/>
+    <fullyQualifiedTypeName name="org.serratec.calculos.CalculadoraFinanceira"/>
 </qualifiedTypeNameHistroy>
