@@ -1,0 +1,8 @@
+package org.serratec.calculos;
+
+public class CalculadoraFinanceira {
+	private double descontoInss;
+	private double descontoIR;
+	private double salarioLiquido;
+	private double deducaoDependentes;
+}

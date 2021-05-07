@@ -1,0 +1,24 @@
+package org.serratec.app;
+
+import java.time.LocalDate;
+import org.serratec.excecoes.CpfRepetidoException;
+import java.util.List;
+
+public class Funcionario extends Pessoa {
+	private double salarioBruto;
+	private double salarioLiquido;
+	private List<Dependente> dependentes;
+
+	public Funcionario(String nome, String cpf, LocalDate dataNascimento, double salarioBruto,
+			List<Dependente> dependentes) throws CpfRepetidoException {
+		super(nome, cpf, dataNascimento);
+		this.salarioBruto = salarioBruto;
+		this.dependentes = dependentes;
+	}
+
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", salarioBruto="
+				+ salarioBruto + ", salarioLiquido=" + salarioLiquido + ", dependentes=" + dependentes + "]";
+	}
+}
