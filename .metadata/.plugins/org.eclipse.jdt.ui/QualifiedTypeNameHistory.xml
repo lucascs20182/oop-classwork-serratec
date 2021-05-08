@@ -3,8 +3,15 @@
     <fullyQualifiedTypeName name="org.serratec.excecoes.CpfRepetidoException"/>
     <fullyQualifiedTypeName name="org.serratec.excecoes.DependenteException"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.serratec.service.Leitura"/>
     <fullyQualifiedTypeName name="org.serratec.app.Dependente"/>
     <fullyQualifiedTypeName name="org.serratec.calculos.CalculadoraFinanceira"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.serratec.service.Escritora"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>

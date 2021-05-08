@@ -1,0 +1,37 @@
+package org.serratec.service;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.serratec.entidades.Funcionario;
+import org.serratec.excecoes.CpfRepetidoException;
+
+public class Escritora  {
+	private final String NOME_DO_ARQUIVO = "saida";
+	private Leitora entrada;
+	
+	public Escritora(Leitora entrada) {
+		this.entrada = entrada;
+	}
+	
+	private void escreveCsv() throws IOException {
+		FileWriter csvWriter  = new FileWriter("C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\" + NOME_DO_ARQUIVO + ".csv");
+		List<List<String>> linhas = Arrays.asList();
+		
+		for (Funcionario funcionario : entrada.getFuncionarios()) {
+			funcionario.definirImpostos();
+			funcionario.definirSalarioLiquido();
+			
+			String[] atributos = funcionario.toString().split(";");
+			
+			Arrays.asList(atributos[0], atributos[1], atributos[2], atributos[3], atributos[4]);
+		}
+		
+		csvWriter.flush();
+		csvWriter.close();
+	}
+}

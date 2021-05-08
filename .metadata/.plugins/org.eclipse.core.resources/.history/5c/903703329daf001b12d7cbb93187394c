@@ -1,0 +1,23 @@
+package org.serratec.app;
+
+import java.io.IOException;
+
+import org.serratec.service.Escritora;
+import org.serratec.service.Leitora;
+
+public class Programa {
+	public static void main(String[] args) {
+		String caminhoArquivo = "C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\entrada.csv";
+		Leitora leitura = new Leitora(caminhoArquivo);
+		
+		Escritora escrita = new Escritora(leitura);
+		
+		try {
+			escrita.escreveCsv();
+			System.out.println("Arquivo gerado!");
+		} catch (IOException e) {
+			System.out.println("Erro na gravação do arquivo.");
+			e.printStackTrace();
+		}
+	}
+}

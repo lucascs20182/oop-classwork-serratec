@@ -1,22 +1,22 @@
 package org.serratec.app;
 
-//import org.serratec.entidades.Funcionario;
-import org.serratec.service.Leitor;
+import java.io.IOException;
+import org.serratec.service.Leitora;
+import org.serratec.service.Escritora;
 
 public class Programa {
 	public static void main(String[] args) {
-		String caminhoArquivo = "C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\entrada.csv";
-		Leitor leitura = new Leitor(caminhoArquivo);
-
-		// temp: pro output ficar igual o ex. do professor
-		for (int i = leitura.getFuncionarios().size() - 1; i >= 0; i--) {
-			leitura.getFuncionarios().get(i).calcularSalarioLiquido();
-			System.out.println(leitura.getFuncionarios().get(i));
+		final String CAMINHO_DO_ARQUIVO = "C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\entrada.csv";
+		
+		Leitora leitura = new Leitora(CAMINHO_DO_ARQUIVO);
+		Escritora escrita = new Escritora(leitura);
+		
+		try {
+			escrita.escreveCsv();
+			System.out.println("Arquivo gerado!");
+		} catch (IOException e) {
+			System.out.println("Erro na gravação do arquivo.");
+			e.printStackTrace();
 		}
-
-		/*
-		 * for (Funcionario funcionario : leitura.getFuncionarios()) {
-		 * funcionario.calcularSalarioLiquido(); System.out.println(funcionario); }
-		 */
 	}
 }

@@ -21,7 +21,7 @@ public class Funcionario extends Pessoa {
 		this.dependentes = dependentes;
 	}
 	
-	public void calcularSalarioLiquido() {
+	public void calcularFinancas() {
 		this.salarioLiquido = calculadora.calculaSalarioLiquido(this.salarioBruto, this.dependentes);
 		this.descontoInss = calculadora.getDescontoInss();
 		this.descontoIr = calculadora.getDescontoIR();
@@ -41,7 +41,7 @@ public class Funcionario extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "<" + nome + "><" + cpf + "><" + String.format("%.2f", descontoInss) + "><"
-				+ String.format("%.2f", descontoIr) + "><" + String.format("%.2f", salarioLiquido) + ">";
+		return nome + ";" + cpf + ";" + String.format("%.2f", descontoInss) + ";"
+				+ String.format("%.2f", descontoIr) + ";" + String.format("%.2f", salarioLiquido);
 	}
 }

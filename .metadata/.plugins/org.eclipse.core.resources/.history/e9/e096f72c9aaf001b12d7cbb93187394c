@@ -1,0 +1,40 @@
+package org.serratec.service;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.serratec.entidades.Funcionario;
+
+public class Escritora  {
+	private final String NOME_DO_ARQUIVO = "saida";
+	private Leitora entrada;
+	
+	public Escritora(Leitora entrada) {
+		this.entrada = entrada;
+	}
+	
+	public void escreveCsv() throws IOException {
+		FileWriter csvWriter  = new FileWriter("C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\" + NOME_DO_ARQUIVO + ".csv");
+		List<List<String>> linhas = Arrays.asList();
+		
+		for (Funcionario funcionario : entrada.getFuncionarios()) {
+			funcionario.definirImpostos();
+			funcionario.definirSalarioLiquido();
+			
+			String[] atributos = funcionario.toString().split(";");
+			System.out.println(Arrays.asList(atributos[0], atributos[1], atributos[2], atributos[3], atributos[4]));
+			linhas.add(Arrays.asList(atributos[0], atributos[1], atributos[2], atributos[3], atributos[4]));
+			
+		}
+		
+		for (List<String> linha : linhas) {
+		    csvWriter.append(String.join(",", linha));
+		    csvWriter.append("\n");
+		}
+		
+		csvWriter.flush();
+		csvWriter.close();
+	}
+}

@@ -1,0 +1,22 @@
+package org.serratec.app;
+
+//import org.serratec.entidades.Funcionario;
+import org.serratec.service.Leitora;
+
+public class Programa {
+	public static void main(String[] args) {
+		String caminhoArquivo = "C:\\Users\\Residencia Note 13\\Desktop\\serratec_stuff\\requisitos\\entrada.csv";
+		Leitora leitura = new Leitora(caminhoArquivo);
+
+		// temp: pro output ficar igual o ex. do professor
+		for (int i = leitura.getFuncionarios().size() - 1; i >= 0; i--) {
+			leitura.getFuncionarios().get(i).calcularSalarioLiquido();
+			System.out.println(leitura.getFuncionarios().get(i));
+		}
+
+		/*
+		 * for (Funcionario funcionario : leitura.getFuncionarios()) {
+		 * funcionario.calcularSalarioLiquido(); System.out.println(funcionario); }
+		 */
+	}
+}

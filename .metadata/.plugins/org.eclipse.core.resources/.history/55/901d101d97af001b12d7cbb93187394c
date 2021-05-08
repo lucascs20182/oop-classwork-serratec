@@ -1,0 +1,57 @@
+package org.serratec.service;
+
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.serratec.entidades.Funcionario;
+
+public class Escritora {
+	private final String NOME_DO_ARQUIVO = "saida";
+	private Leitora entrada;
+	List<String[]> dataLines = new ArrayList<>();
+	FileWriter csvWriter = new FileWriter(NOME_DO_ARQUIVO + ".csv");
+	
+	public Escritora(Leitora entrada) {
+		this.entrada = entrada;
+	}
+//	public String convertToCSV(String[] data) {
+//	    return Stream.of(data)
+//	      .map(this::escapeSpecialCharacters)
+//	      .collect(Collectors.joining(","));
+//	}
+	
+	
+	
+	private void preencherDataLines() {
+		for (int i = this.entrada.getFuncionarios().size() - 1; i >= 0; i--) {
+			this.entrada.getFuncionarios().get(i).definirImpostos();
+			this.entrada.getFuncionarios().get(i).definirSalarioLiquido();
+			System.out.println(this.entrada.getFuncionarios().get(i));
+		}
+		
+		for (Funcionario linha : this.entrada.getFuncionarios()) {
+		    csvWriter.append(String.join(",", rowData));
+		    csvWriter.append("\n");
+		}
+	}
+	
+	
+	
+	
+	dataLines.add(new String[] 
+	  { "John", "Doe", "38", "Comment Data\nAnother line of comment data" });
+	dataLines.add(new String[] 
+	  { "Jane", "Doe, Jr.", "19", "She said \"I'm being quoted\"" });
+	
+	public void givenDataArray_whenConvertToCSV_thenOutputCreated() throws IOException {
+	    File saida = new File(NOME_DO_ARQUIVO);
+	    
+	    try (PrintWriter pw = new PrintWriter(saida)) {
+	        dataLines.stream()
+	          .map(this::convertToCSV)
+	          .forEach(pw::println);
+	    }
+	    assertTrue(saida.exists());
+	}
+}
