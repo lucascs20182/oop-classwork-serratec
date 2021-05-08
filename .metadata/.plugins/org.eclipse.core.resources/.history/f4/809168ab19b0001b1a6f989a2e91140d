@@ -1,4 +1,4 @@
-package org.serratec.entidades;
+package org.serratec.models;
 
 import java.time.LocalDate;
 
@@ -19,12 +19,12 @@ public class Funcionario extends Pessoa {
 		super(nome, cpf, dataNascimento);
 		this.salarioBruto = salarioBruto;
 		this.dependentes = dependentes;
-
+	}
+	
+	public void calcularFinancas() {
 		this.salarioLiquido = calculadora.calculaSalarioLiquido(this.salarioBruto, this.dependentes);
 		this.descontoInss = calculadora.getDescontoInss();
 		this.descontoIr = calculadora.getDescontoIR();
-		
-		System.out.println("\n\n" + dependentes.size() + dependentes.get(0) + dependentes.get(1) + "\n\n");
 	}
 
 	public double getSalarioLiquido() {
@@ -41,7 +41,7 @@ public class Funcionario extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "<" + nome + "><" + cpf + "><" + String.format("%.2f", descontoInss) + "><"
-				+ String.format("%.2f", descontoIr) + "><" + String.format("%.2f", salarioLiquido) + ">";
+		return nome + ";" + cpf + ";" + String.format("%.2f", descontoInss) + ";"
+				+ String.format("%.2f", descontoIr) + ";" + String.format("%.2f", salarioLiquido);
 	}
 }

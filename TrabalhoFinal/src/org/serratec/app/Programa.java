@@ -1,8 +1,9 @@
 package org.serratec.app;
 
 import java.io.IOException;
-import org.serratec.service.Leitora;
-import org.serratec.service.Escritora;
+
+import org.serratec.services.Escritora;
+import org.serratec.services.Leitora;
 
 public class Programa {
 	public static void main(String[] args) {

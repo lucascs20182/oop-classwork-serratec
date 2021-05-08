@@ -12,3 +12,8 @@
 1620432677985	Rename type 'Escritor'
 1620432698703	Rename type 'Leitor'
 1620433032734	Delete element
+1620490971083	Rename package 'org.serratec.entidades'
+1620490986390	Rename package 'org.serratec.excecoes'
+1620491054095	Rename package 'org.serratec.service'
+1620491200180	Move compilation unit
+1620491223390	Delete element
