@@ -30,8 +30,7 @@ public class Dependente extends Pessoa {
 				&& hoje.getDayOfMonth() < dataNascimento.getDayOfMonth()) {
 					idade--;
 			}
-		}
-		
+		}	
 		return idade;
 	}
 	

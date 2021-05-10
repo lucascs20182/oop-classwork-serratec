@@ -2,7 +2,9 @@ package org.serratec.models;
 
 import java.time.LocalDate;
 import java.util.List;
+
 import org.serratec.exceptions.CpfRepetidoException;
+
 import java.util.ArrayList;
 
 public abstract class Pessoa {
@@ -22,4 +24,18 @@ public abstract class Pessoa {
 			Pessoa.cpfsCadastrados.add(cpf);
 		}
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+	
+	
 }

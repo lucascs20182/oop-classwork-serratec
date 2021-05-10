@@ -4,9 +4,9 @@ public class DependenteException extends Exception {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8585784900840542874L;
+	private static final long serialVersionUID = -7519336446107692072L;
 
 	public DependenteException() {
-		super("Dependente n„o pode ter mais do que 18 anos.");
+		super("Dependente n√£o pode ter mais do que 18 anos.");
 	}
 }

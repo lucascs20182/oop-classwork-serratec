@@ -1,14 +1,16 @@
 package org.serratec.models;
 
 import java.time.LocalDate;
+
 import org.serratec.exceptions.CpfRepetidoException;
 import org.serratec.services.CalculadoraFinanceira;
+
 import java.util.List;
 
 public class Funcionario extends Pessoa {
-	private double salarioBruto;
-	private List<Dependente> dependentes;
 	CalculadoraFinanceira calculadora = new CalculadoraFinanceira();
+	private List<Dependente> dependentes;
+	private double salarioBruto;
 	private double salarioLiquido;
 	private double descontoInss;
 	private double descontoIr;
@@ -20,7 +22,7 @@ public class Funcionario extends Pessoa {
 		this.dependentes = dependentes;
 	}
 	
-	public void calcularFinancas() {
+	public void calcularSalarioLiquido() {
 		this.salarioLiquido = calculadora.calculaSalarioLiquido(this.salarioBruto, this.dependentes);
 		this.descontoInss = calculadora.getDescontoInss();
 		this.descontoIr = calculadora.getDescontoIR();
@@ -39,8 +41,8 @@ public class Funcionario extends Pessoa {
 	}
 
 	@Override
-	public String toString() {
-		return nome + ";" + cpf + ";" + String.format("%.2f", descontoInss) + ";"
-				+ String.format("%.2f", descontoIr) + ";" + String.format("%.2f", salarioLiquido);
-	}
+    public String toString() {
+        return this.nome + ";" + this.cpf + ";" + String.format("%.2f", this.descontoInss) + ";"
+                + String.format("%.2f", this.descontoIr) + ";" + String.format("%.2f", this.salarioLiquido);
+    }
 }

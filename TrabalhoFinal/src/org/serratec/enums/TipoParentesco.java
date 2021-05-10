@@ -1,7 +1,7 @@
 package org.serratec.enums;
 
 public enum TipoParentesco {
-	FILHO,
+	FILHO, 
 	SOBRINHO,
 	OUTROS;
 }
