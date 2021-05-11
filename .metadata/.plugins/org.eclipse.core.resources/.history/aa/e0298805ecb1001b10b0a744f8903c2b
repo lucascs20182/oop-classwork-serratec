@@ -1,0 +1,5 @@
+package org.serratec.exceptions;
+
+public class DependenteTipoException {
+
+}

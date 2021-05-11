@@ -1,0 +1,45 @@
+package org.serratec.models;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+import org.serratec.enums.TipoParentesco;
+import org.serratec.exceptions.CpfRepetidoException;
+import org.serratec.exceptions.DependenteException;
+import org.serratec.exceptions.DependenteTipoException;
+
+public class Dependente extends Pessoa {
+	private TipoParentesco parentesco;
+
+	public Dependente(String nome, String cpf, LocalDate dataNascimento, TipoParentesco parentesco)
+			throws CpfRepetidoException, DependenteException, DependenteTipoException {
+		super(nome, cpf, dataNascimento);
+		this.parentesco = parentesco;
+		
+		if(this.isDependenteMaiorDezoito(dataNascimento)) {
+			throw new DependenteException();
+		}
+		
+		if(this.isParentesco(parentesco)) {
+			throw new DependenteTipoException();
+		}
+	}
+	
+	private int definirIdade(LocalDate dataNascimento) {
+		LocalDate hoje = LocalDate.now();
+		
+		return Period.between(dataNascimento, hoje).getYears();
+	}
+	
+	private boolean isDependenteMaiorDezoito(LocalDate dataNascimento) {
+		return this.definirIdade(dataNascimento) > 17;
+	}
+	
+	private boolean isParentesco(TipoParentesco parentesco) {
+		return parentesco != TipoParentesco.FILHO || parentesco != TipoParentesco.SOBRINHO || parentesco != TipoParentesco.OUTROS;
+	}
+
+	public TipoParentesco getParentesco() {
+		return parentesco;
+	}
+}

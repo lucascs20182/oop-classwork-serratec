@@ -1,0 +1,12 @@
+package org.serratec.exceptions;
+
+public class DependenteTipoException extends Exception{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7012821836942525188L;
+
+	public DependenteTipoException() {
+		super("Parentesco Inválido");
+	}
+}

@@ -1,0 +1,74 @@
+package org.serratec.services;
+
+import java.util.List;
+
+import org.serratec.interfaces.ICalculadoraFinanceira;
+import org.serratec.models.Dependente;
+
+public class CalculadoraFinanceira extends DadosAliquota implements ICalculadoraFinanceira {
+	private static double salarioBruto;
+	private static double descontoInss;
+	private static double descontoIR;
+	private static List<Dependente> dependentes;
+	private static double deducaoDependentes;
+
+	public double calculaSalarioLiquido(double salarioBruto, List<Dependente> dependentes) {
+		CalculadoraFinanceira.salarioBruto = salarioBruto;
+		CalculadoraFinanceira.dependentes = dependentes;
+
+		CalculadoraFinanceira.calcularDescontoInss();
+		CalculadoraFinanceira.calcularDeducaoDependentes();
+		CalculadoraFinanceira.calcularDescontoIR();
+
+		return (CalculadoraFinanceira.salarioBruto - CalculadoraFinanceira.descontoInss
+				- CalculadoraFinanceira.descontoIR);
+	}
+
+	public static double calcularDescontoInss() {
+		if (CalculadoraFinanceira.salarioBruto <= ALIQUOTA_INSS_ISENTO) {
+			return descontoInss = CalculadoraFinanceira.salarioBruto * 7.5 / 100;
+		} else if (CalculadoraFinanceira.salarioBruto <= ALIQUOTA_INSS_TAXA_1) {
+			return descontoInss = (CalculadoraFinanceira.salarioBruto * 9 / 100) - 16.5;
+		} else if (CalculadoraFinanceira.salarioBruto <= ALIQUOTA_INSS_TAXA_2) {
+			return descontoInss = (CalculadoraFinanceira.salarioBruto * 12 / 100) - 82.61;
+		} else if (CalculadoraFinanceira.salarioBruto <= ALIQUOTA_INSS_TAXA_3) {
+			return descontoInss = (CalculadoraFinanceira.salarioBruto * 14 / 100) - 148.72;
+		} else {
+			return descontoInss = ALIQUOTA_INSS_TAXA_4;
+		}
+	}
+
+	public static double calcularDescontoIR() {
+		double descontoIR = CalculadoraFinanceira.salarioBruto - CalculadoraFinanceira.deducaoDependentes
+				- CalculadoraFinanceira.descontoInss;
+
+		if (descontoIR <= ALIQUOTA_IR_ISENTO) {
+			return CalculadoraFinanceira.descontoIR;
+		} else if (descontoIR <= ALIQUOTA_IR_TAXA_1) {
+			return CalculadoraFinanceira.descontoIR = (descontoIR * 7.5 / 100) - 142.80;
+		} else if (descontoIR <= ALIQUOTA_IR_TAXA_2) {
+			return CalculadoraFinanceira.descontoIR = (descontoIR * 15 / 100) - 354.80;
+		} else if (descontoIR <= ALIQUOTA_IR_TAXA_3) {
+			return CalculadoraFinanceira.descontoIR = (descontoIR * 22.5 / 100) - 636.13;
+		} else {
+			return CalculadoraFinanceira.descontoIR = (descontoIR * 27.5 / 100) - 869.36;
+		}
+	}
+
+	public static double calcularDeducaoDependentes() {
+		return CalculadoraFinanceira.deducaoDependentes = CalculadoraFinanceira.dependentes.size() * 189.59;
+	}
+
+	public double getDescontoInss() {
+		return descontoInss;
+	}
+
+	public double getDescontoIR() {
+		return descontoIR;
+	}
+
+	public double getDeducaoDependentes() {
+		return deducaoDependentes;
+	}
+
+}

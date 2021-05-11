@@ -1,1 +1,8 @@
 1620660933025	Delete element
+1620684298582	Rename method 'calculaDescontoInss'
+1620684318813	Rename method 'calculaDescontoIR'
+1620684348879	Rename method 'calculaDeducaoDependentes'
+1620685082202	Rename method 'defineIdade'
+1620686536504	Rename method 'calculaSalarioLiquido'
+1620694022641	Delete element
+1620694539604	Rename method 'calcularSalarioLiquido'
