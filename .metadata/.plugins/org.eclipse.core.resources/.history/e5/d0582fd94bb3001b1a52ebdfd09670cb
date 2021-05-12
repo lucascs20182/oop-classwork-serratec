@@ -32,7 +32,7 @@ public class Escritora implements IEscritora, AutoCloseable {
 			System.out.println("Falha ao escrever arquivo.");
 		}
 	}
-
+	
 	private void gerarCsv(Funcionario funcionario) throws IOException {
 		funcionario.calcularFinancas();
 
