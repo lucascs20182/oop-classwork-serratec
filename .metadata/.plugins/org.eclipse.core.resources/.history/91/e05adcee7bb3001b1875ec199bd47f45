@@ -22,13 +22,9 @@ public class Programa {
 
 		System.out.println("\n");
 
-		final String CAMINHO_ARQUIVO_ENTRADA = "files" + File.separator + nomeEntrada + ".csv";
-		final String CAMINHO_ARQUIVO_SAIDA = "files" + File.separator + nomeSaida + ".csv";
+		final String CAMINHO_DO_ARQUIVO = "files" + File.separator + nomeEntrada + ".csv";
 
-		try (
-				Leitora leitura = new Leitora(CAMINHO_ARQUIVO_ENTRADA);
-				Escritora escrita = new Escritora(leitura, CAMINHO_ARQUIVO_SAIDA)
-		) {
+		try (Leitora leitura = new Leitora(CAMINHO_DO_ARQUIVO); Escritora escrita = new Escritora(leitura)) {
 			escrita.escreverCsv();
 			System.out.println("Arquivo gerado!");
 		}

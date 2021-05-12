@@ -9,20 +9,20 @@ import org.serratec.interfaces.IEscritora;
 import org.serratec.models.Funcionario;
 
 public class Escritora implements IEscritora, AutoCloseable {
-	private String caminhoArquivo;
+	private final String CAMINHO_DO_ARQUIVO = "files" + File.separator;
+	private final String NOME_DO_ARQUIVO_SAIDA = "saida.csv";
 	private Leitora entrada;
 	private FileWriter csvFWriter;
 	private BufferedWriter csvBWriter;
 
 	public Escritora(Leitora entrada, String CAMINHO_ARQUIVO_SAIDA) {
 		this.entrada = entrada;
-		this.caminhoArquivo = CAMINHO_ARQUIVO_SAIDA;
 	}
 
 	public void escreverCsv() {
 
 		try {
-			this.csvFWriter = new FileWriter(caminhoArquivo);
+			this.csvFWriter = new FileWriter(CAMINHO_DO_ARQUIVO + NOME_DO_ARQUIVO_SAIDA);
 			this.csvBWriter = new BufferedWriter(csvFWriter);
 
 			for (Funcionario funcionario : entrada.getFuncionarios()) {

@@ -23,7 +23,6 @@ public class Programa {
 		System.out.println("\n");
 
 		final String CAMINHO_ARQUIVO_ENTRADA = "files" + File.separator + nomeEntrada + ".csv";
-		final String CAMINHO_ARQUIVO_SAIDA = "files" + File.separator + nomeSaida + ".csv";
 
 		try (
 				Leitora leitura = new Leitora(CAMINHO_ARQUIVO_ENTRADA);

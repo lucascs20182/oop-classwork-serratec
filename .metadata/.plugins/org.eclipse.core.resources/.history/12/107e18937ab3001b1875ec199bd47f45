@@ -1,0 +1,29 @@
+package org.serratec.app;
+
+import java.io.File;
+
+import org.serratec.services.Escritora;
+import org.serratec.services.Leitora;
+
+public class Programa {
+	public static void main(String[] args) {
+		System.out.println("Olá!\n\nAs entradas e saídas deste "
+				+ "programa são direcionadas à pasta 'files'\n"
+				+ "que pode ser encontrada dentro do diretório do projeto."
+				+ "\n\nPara começar, mova um arquivo .csv para essa pasta"
+				+ "e entre com os seguintes dados:\n\n1. Nome do arquivo de entrada:"
+				+ "\n2. Nome que o arquivo de saída terá: ");
+		
+		
+		final String CAMINHO_DO_ARQUIVO = "files" + File.separator + "entrada.csv";
+		
+
+		try(
+			Leitora leitura = new Leitora(CAMINHO_DO_ARQUIVO);
+			Escritora escrita = new Escritora(leitura)
+			) {
+			escrita.escreverCsv();
+			System.out.println("Arquivo gerado!");
+		}
+	}
+}
