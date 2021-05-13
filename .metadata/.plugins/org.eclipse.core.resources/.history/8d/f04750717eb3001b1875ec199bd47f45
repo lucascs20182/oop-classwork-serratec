@@ -18,7 +18,7 @@ public abstract class Pessoa {
 		this.dataNascimento = dataNascimento;
 		
 		if(cpf.length() != 11) {
-			throw new CpfException("O CPF deve possuir apenas algarismos e ter 11 digitos");
+			throw new CpfException("");
 		}
 
 		if (cpfsCadastrados.contains(cpf)) {

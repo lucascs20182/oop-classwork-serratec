@@ -19,8 +19,6 @@ public class Programa {
 
 		System.out.print("2. Nome que o arquivo de saída " + "terá (ex.: saida): ");
 		String nomeSaida = input.nextLine();
-		
-		input.close();
 
 		System.out.println("\n");
 
