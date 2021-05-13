@@ -48,7 +48,7 @@ public class Leitora implements ILeitora, AutoCloseable {
 			System.out.println("Formato errado de arquivo.");
 			e.getMessage();
 		} catch (NumberFormatException e) {
-			System.out.println("O formato do arquivo est· incorreto");
+			System.out.println("O formato da data est√° incorreto.");
 			e.printStackTrace();
 		} catch (CpfException e) {
 			System.out.println(e.getMessage());
